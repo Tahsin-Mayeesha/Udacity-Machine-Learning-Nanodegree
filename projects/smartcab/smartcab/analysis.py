@@ -75,16 +75,29 @@ class Reporter(object):
         self.fig.canvas.draw()
         self.fig.canvas.flush_events()
         plt.draw()
+        
+    def summary(self):
+        return [pd.Series(metric.ydata, index=metric.xdata, name=name) for name, metric in self.metrics.iteritems()]
+
 
     def show_plot(self):
         if plt.isinteractive():
             plt.ioff()
         self.plot()
+        summary1 = self.summary()
+        print "Summary ({} metrics):-".format(len(summary1))
+        for metric in summary1:
+            print "Name: {}, samples: {}, type: {}".format(metric.name, len(metric), metric.dtype)
+            if metric.name == "success":
+                print "Total : {} success out of {} samples".format(sum(metric),len(metric))
+            else:
+                print "Mean: {}, s.d.: {}".format(metric.mean(), metric.std())
+        #print metric[:5]  # [debug]
+        
+     
         plt.show()
 
-    def summary(self):
-        return [pd.Series(metric.ydata, index=metric.xdata, name=name) for name, metric in self.metrics.iteritems()]
-
+ 
     def reset(self):
         for name in self.metrics:
             self.metrics[name].reset()

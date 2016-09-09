@@ -39,6 +39,9 @@ class Environment(object):
         self.t = 0
         self.agent_states = OrderedDict()
         self.status_text = ""
+        
+        
+        
 
         # Road network
         self.grid_size = (8, 6)  # (cols, rows)
@@ -94,6 +97,7 @@ class Environment(object):
     def reset(self):
         self.done = False
         self.t = 0
+        self.success = 0
 
         # Reset traffic lights
         for traffic_light in self.intersections.itervalues():
@@ -234,6 +238,7 @@ class Environment(object):
                     self.trial_data['success'] = 1
                 self.done = True
                 print "Environment.act(): Primary agent has reached destination!"  # [debug]
+                
             self.status_text = "state: {}\naction: {}\nreward: {}".format(agent.get_state(), action, reward)
             #print "Environment.act() [POST]: location: {}, heading: {}, action: {}, reward: {}".format(location, heading, action, reward)  # [debug]
 
@@ -252,6 +257,9 @@ class Environment(object):
     def compute_dist(self, a, b):
         """L1 distance between two points."""
         return abs(b[0] - a[0]) + abs(b[1] - a[1])
+    
+    def stats_trial():
+        return self.success 
 
 
 class Agent(object):

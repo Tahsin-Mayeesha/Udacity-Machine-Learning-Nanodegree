@@ -67,6 +67,7 @@ class Simulator(object):
         self.live_plot = live_plot
         self.rep = Reporter(metrics=['net_reward', 'avg_net_reward', 'final_deadline', 'success'], live_plot=self.live_plot)
         self.avg_net_reward_window = 10
+        
 
     def run(self, n_trials=1):
         self.quit = False
@@ -123,15 +124,20 @@ class Simulator(object):
             self.rep.collect('success', trial, self.env.trial_data['success'])
             if self.live_plot:
                 self.rep.refresh_plot()  # autoscales axes, draws stuff and flushes events
+                
 
+                
+       
         # Report final metrics
         if self.display:
             self.pygame.display.quit()  # need to shutdown pygame before showing metrics plot
             # TODO: Figure out why having both game and plot displays makes things crash!
 
         if self.live_plot:
-            self.rep.show_plot()  # holds till user closes plot window
-
+             self.rep.show_plot()  # holds till user closes plot window
+            
+        
+                
     def render(self):
         # Clear screen
         self.screen.fill(self.bg_color)
