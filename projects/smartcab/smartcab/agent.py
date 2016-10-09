@@ -23,10 +23,11 @@ class LearningAgent(Agent):
         # Add parameters for the Q-table
         
         self.gamma = 0.3
-        self.alpha = 0.6
+        self.alpha = 0.3
         self.epsilon = 0.1
         self.Q = {} 
-        self.default_Q_val = 14
+        self.default_Q_val = 0
+        
         
 
     def reset(self, destination=None):
@@ -81,6 +82,8 @@ class LearningAgent(Agent):
         reward = self.env.act(self, action)
 
         # TODO: Learn policy based on state, action, reward/ Updating Q-table values
+        
+        
         
         if self.previous_state != None:
             # Complete the equation after rewatching the videos 
