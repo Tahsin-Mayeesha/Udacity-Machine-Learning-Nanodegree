@@ -23,10 +23,11 @@ class LearningAgent(Agent):
         # Add parameters for the Q-table
         
         self.gamma = 0.3
-        self.alpha = 0.3
+        self.alpha = 0.5        
         self.epsilon = 0.1
         self.Q = {} 
         self.default_Q_val = 0
+        self.step_number = 0
         
         
 
@@ -37,6 +38,7 @@ class LearningAgent(Agent):
         self.previous_state = None
         self.previous_action = None
         self.previous_reward = None
+        self.step_number+=1
 
     def update(self, t):
         # Gather inputs
@@ -61,7 +63,7 @@ class LearningAgent(Agent):
         # TO DO: Choose action on basis of Q-learning
         
         if self.state in self.Q: # if we have been into this state before 
-            if random.random() > self.epsilon: # epsilon should be a small number so that we use the learned values of Q-table most of the time
+            if random.random() > self.epsilon/self.step_number: # epsilon should be a small number so that we use the learned values of Q-table most of the time
                 # choose the action that has the max Q-value, can be greater than one if most of the actions has just been initialized
                 potential_actions = {a:v for a,v in self.Q[self.state].items() if v==max(self.Q[self.state].values())}
                 action = random.choice(potential_actions.keys())
