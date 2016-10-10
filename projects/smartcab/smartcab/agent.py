@@ -50,9 +50,9 @@ class LearningAgent(Agent):
         
         
         
-        self.state = (("light",inputs["light"]),("oncoming",inputs["oncoming"]),("waypoint",self.next_waypoint))
+        # self.state = (("light",inputs["light"]),("oncoming",inputs["oncoming"]),("waypoint",self.next_waypoint))
         
-        
+        self.state = (("light",inputs["light"]),("oncoming",inputs["oncoming"]),("waypoint",self.next_waypoint),("left",inputs["left"]),("right",inputs["right"]))
         
         #1st Q. Implement a basic agent that chooses action randomly
         # action = random.choice(self.correct_actions)
