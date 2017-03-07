@@ -13,6 +13,12 @@ You will also need to have software installed to run and execute an [iPython Not
 
 Udacity recommends our students install [Anaconda](https://www.continuum.io/downloads), a pre-packaged Python distribution that contains all of the necessary libraries and software for this project. 
 
+### Overview
+
+This project uses supervised machine learning techniques to predict which students should be flagged for intervention as high risk students and compares different classifiers.
+
+![](table.png)
+
 ### Code
 
 Template code is provided in the notebook `student_intervention.ipynb` notebook file. While some code has already been implemented to get you started, you will need to implement additional functionality when requested to successfully complete the project.
