@@ -1,6 +1,6 @@
 # Udacity-Machine-Learning-Nanodegree
 
-![](verified certificate.png)
+![](https://github.com/Tahsin-Mayeesha/Udacity-Machine-Learning-Nanodegree/blob/master/verified%20certificate.png)
 
 ## About 
 
